@@ -1,0 +1,23 @@
+<style>
+  .toolbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+<div class="toolbar" role="banner">
+  <h1>{{this.title}}</h1>
+  <div>
+    <input #newTask placeholder="Escreva sua tarefa aqui..." value={{this.taskInput}} (keyup)="getValue(newTask.value)"
+      type="text" />
+    <button (click)="createTask()">Criar nova Tarefa</button>
+  </div>
+  <ul>
+    <li *ngFor="let task of this.allTasks">
+      <span (click)="changeStatusTask($event)">{{task.text}}</span>
+      <button (click)="deleteTask(task.id)" id={{task.id}}>Apagar Task</button>
+    </li>
+  </ul>
+</div>
